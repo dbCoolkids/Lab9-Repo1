@@ -9,12 +9,14 @@
         <link rel="stylesheet" type="text/css" href="/assets/css/default.css"/>
 	</head>
 	<body>
+	<!--
         <div id="container">
         	{navbar}
 			{content}
 			<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. 
 				{ci_version}</p>
         </div>
+    -->
             {caboose_scripts}
             {caboose_trailings}
 	</body>
