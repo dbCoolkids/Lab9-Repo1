@@ -31,16 +31,22 @@ class Maintenance extends Rest_Controller {
 		}
 	}
 	
-	// Handle an incoming PUT - crUd
+	// Handle an incoming PUT - update a menu item
 	function index_put()
 	{
-    	$this->response('ok', 200);
+	    $key = $this->get('id');
+	    $record = array_merge(array('id' => $key), $this->_put_args);
+	    $this->Menu->update($record);
+	    $this->response(array('ok'), 200);
 	}
 
-	// Handle an incoming POST - Crud
+	// Handle an incoming POST - add a new menu item
 	function index_post()
 	{
-    	$this->response('ok', 200);
+	    $key = $this->get('id');
+	    $record = array_merge(array('id' => $key), $_POST);
+	    $this->Menu->add($record);
+	    $this->response(array('ok'), 200);
 	}
 
 	// Handle an incoming DELETE - cruD
@@ -58,4 +64,22 @@ class Maintenance extends Rest_Controller {
     	else
         	$this->response(array('error' => 'Menu item not found!'), 404);
 	}
+
+	// Handle an incoming POST - add a new menu item
+	function item_post()
+	{
+	    $key = $this->get('id');
+	    $record = array_merge(array('id' => $key), $_POST);
+	    $this->Menu->add($record);
+	    $this->response(array('ok'), 200);
+	}
+
+	// Handle an incoming DELETE - delete a menu item
+	function item_delete()
+	{
+	    $key = $this->get('id');
+	    $this->Menu->delete($key);
+	    $this->response(array('ok'), 200);
+	}
+	
 }
